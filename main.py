@@ -3,7 +3,7 @@ import write as w
 import purchase as p
 import addProduct as ap
 
-op = int(input("1: Add product\n2: Make bill\nEnter yopur choice: "))
+op = int(input("1: Add product\n2: Make bill\nEnter your choice: "))
 if 1==op:
     print("Add product")
     AddNewProduct = "y"
