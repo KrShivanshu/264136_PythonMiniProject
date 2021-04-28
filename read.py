@@ -1,5 +1,5 @@
 def read_list():    
-    file = open("products.txt", "r")  
+    file = open("ProductList.txt", "r")  
     lines = file.readlines()
     L = []
     for line in lines:
