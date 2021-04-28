@@ -1,0 +1,9 @@
+Phone,200,40
+Laptop,900,40
+HDD,200,36
+Mic,200,7
+Bulb,100,50
+Switch,15,100
+Fan,300,15
+Wire,10,1000
+King,20,0
