@@ -1,10 +1,12 @@
 import read as r
+import write as w
+import purchase as p
 
 NewCustomerWaiting = "y"
 while NewCustomerWaiting.lower()=="y":
     a = r.readList()
-    b = purchase.product(a)
-    write.updateList(a,b)
+    b = p.product(a)
+    w.updateList(a,b)
     NewCustomerWaiting=input("Is any new customer waiting in the queue?(y/n): ")
-rint("\nThankyou for shopping, Please visit again!")
+print("\nThankyou for shopping, Please visit again!")
 print("Please check the invoice created")
