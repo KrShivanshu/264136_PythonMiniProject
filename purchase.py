@@ -7,38 +7,35 @@ def product(List):
     while flag.upper() == "Y": 
         product = input("\nWhat product do you want to buy? ")
         product_name = product.upper()  
+        for l in L:
+            if l[0].upper()==product_name:  
+                p = True
+                while p == True:
+                    try:
+                        p_quantity = int(input("How many " + product + " do you want to buy: "))
+                        p = False
+                    except: 
+                        print("\t\tError!!!\nPlease enter integer value!! ")
+                L_Q = int(l[2])
+                if L_Q>=p_quantity:
+                    q[product_name] = p_quantity
+                else:
+                    print(
+                        "\nSorry! " + a_name + "!, " + product + " is out of stock.\n")
 
-        if product_name == L[0][0].upper() \
-                or product_name == L[1][0].upper() \
-                or product_name == L[2][0].upper():  
-            p = True
-            while p == True:
-                try:
-                    p_quantity = int(input("How many " + product + " do you want to buy: "))
-                    p = False
-                except: 
-                    print("\t\tError!!!\nPlease enter integer value!! ")
-            if product_name == L[0][0].upper() and p_quantity <= int(L[0][2]):
-                q[product_name] = p_quantity
-            elif product_name == L[1][0].upper() and p_quantity <= int(L[1][2]):
-                q[product_name] = p_quantity
-            elif product_name == L[2][0].upper() and p_quantity <= int(L[2][2]):
-                q[product_name] = p_quantity
-            else:
-                print(
-                    "\nSorry!! " + a_name + "!, " + product + " is out of stock.\n")
+                flag = (input(a_name + " do you want buy more products?(Y/N)"))
+                break
+            elif str(L[-1][0]).upper()==str(l[0]).upper():
+                print("Sorry! " + product + " is not available in our store.")
+                print("\nChoose from following products please!")
+                print("--------------------------------------------")
+                print("PRODUCT\t\tPRICE\t\tQUANTITY")
+                print("--------------------------------------------")
+                for i in range(len(L)):
+                    print(L[i][0], "\t\t", L[i][1], "\t\t", L[i][2])  
+                print("--------------------------------------------")
 
-            flag = (input(a_name + " do you want buy more products?(Y/N)"))
-        else:
-            print("Sorry! " + product + " is not available in our store.")
-            print("\nChoose from following products please!")
-            print("--------------------------------------------")
-            print("PRODUCT\t\tPRICE\t\tQUANTITY")
-            print("--------------------------------------------")
-            for i in range(len(L)):
-                print(L[i][0], "\t\t", L[i][1], "\t\t",
-                        L[i][2])
-            print("--------------------------------------------")
+
 
     print("\nYou Choosed Items and it's Quantity respectively:")
     for i,j in q.items():
@@ -47,24 +44,15 @@ def product(List):
 
     f_amount = 0
     for keys in q.keys():
-        if keys == L[0][0].upper():
-            p_price = int(L[0][1])
-            p_num = int(q[keys])
-            p_amount = (p_price * p_num)
-            f_amount += (p_price * p_num)
-            print("Total cost for phone: ", p_amount)
-        elif keys == L[1][0].upper():
-            l_price = int(L[1][1])
-            l_num = int(q[keys])
-            l_amount = (l_price * l_num)
-            f_amount += (l_price * l_num)
-            print("Total cost for laptop: ", l_amount)
-        else:  
-            h_price = int(L[2][1])
-            h_num = int(q[keys])
-            h_amount = (h_price * h_num)
-            f_amount += (h_price * h_num)
-            print("Total cost for HDD: ", h_amount)
+        for l in L:
+            if keys == l[0].upper():
+                p_price = int(l[1])
+                p_num = int(q[keys])
+                p_amount = (p_price * p_num)
+                f_amount += (p_price * p_num)
+                print("Total cost for",l[0],":" , p_amount)
+                break
+            
 
     total = f_amount
     print("Your payable amount is: ", total)
@@ -91,16 +79,12 @@ def product(List):
     file.write("\n-------------------------------------------------------------")
 
     for keys in q.keys():
-        if keys == "PHONE":
-            file.write(
-                str("\n" + str(keys) + " \t\t " + str(q['PHONE']) + " \t\t " + str(L[0][1]) + " \t\t " + str(p_amount)))
-        elif keys == "LAPTOP":
-            file.write(str(
-                "\n" + str(keys) + " \t\t " + str(q['LAPTOP']) + " \t\t " + str(L[1][1]) + " \t\t " + str(l_amount)))
-        else:
-            file.write(
-                str("\n" + str(keys) + " \t\t " + str(q['HDD']) + " \t\t " + str(L[2][1]) + " \t\t " + str(h_amount)))
-
+        for l in L:
+            if keys == str(l[0]).upper():
+                file.write(
+                    str("\n" + str(keys) + " \t\t " + str(q[str(l[0]).upper()]) + " \t\t " + str(l[1]) + " \t\t " + str( int(l[1])*int(q[keys]))))
+                break
+            
     file.write("\n\n-------------------------------------------------------------")
     file.write("\n\t\t\t Your payable amount is: " + str(total))
     file.write("\n-------------------------------------------------------------")
