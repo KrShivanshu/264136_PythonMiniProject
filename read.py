@@ -1,4 +1,4 @@
-def read_list():    
+def readList():    
     file = open("ProductList.txt", "r")  
     lines = file.readlines()
     L = []
