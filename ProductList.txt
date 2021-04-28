@@ -6,4 +6,4 @@ Bulb,100,50
 Switch,15,100
 Fan,300,15
 Wire,10,1000
-King,20,0
+King,13,-140
