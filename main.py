@@ -18,6 +18,6 @@ elif 2==op:
         a = r.readList()
         b = p.product(a)
         w.updateList(a,b)
+        print("Invoice created")
         NewCustomerWaiting=input("Is any new customer waiting in the queue?(y/n): ")
     print("\nThankyou for shopping, Please visit again!")
-    print("Please check the invoice created")
