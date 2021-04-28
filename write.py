@@ -3,12 +3,10 @@ def updateList(List, Dictionary):
     d = Dictionary
     
     for keys in d.keys():
-        if keys == "PHONE":
-            L[0][2] = str(int(L[0][2])-d['PHONE'])
-        elif keys == "LAPTOP":
-            L[1][2] = str(int(L[1][2])-d['LAPTOP'])
-        else:
-            L[2][2] = str(int(L[2][2])-d['HDD'])
+        for l in L:
+            if keys == str(l[0]).upper():
+                l[2] = str(int(l[2])-d[keys])
+    
     print("\nRemaining Stock Products:")
     for i in L:
         print(i[0]+" - "+i[2])
